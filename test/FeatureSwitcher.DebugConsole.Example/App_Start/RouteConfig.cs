@@ -11,6 +11,8 @@ namespace FeatureSwitcher.DebugConsole.Example
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
+            routes.MapMvcAttributeRoutes();
+
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
@@ -18,6 +20,13 @@ namespace FeatureSwitcher.DebugConsole.Example
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+            //routes.MapRoute(
+            //    name: "FeatureSwitcherConsole",
+            //    url: "featureswitcher/debugconsole/states",
+            //    defaults: new { controller = "DebugConsole", action = "GetStates" }
+            //);
+
         }
     }
 }
