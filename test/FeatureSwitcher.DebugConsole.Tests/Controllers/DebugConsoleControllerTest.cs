@@ -31,7 +31,7 @@ namespace FeatureSwitcher.DebugConsole.Tests.Controllers
                 Configuration.Features.OfType<TestFeature2>.Enabled);
 
             DebugConsoleController controller = new DebugConsoleController();
-            controller.SetEnabled();
+            controller.SetForced();
 
             var result = (controller.GetStates() as JsonResult).Data as GetStateResult;
 

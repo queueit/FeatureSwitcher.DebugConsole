@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using FeatureSwitcher.DebugConsole.Behaviours;
 using FeatureSwitcher.DebugConsole.Example.Features;
 
 namespace FeatureSwitcher.DebugConsole.Example
@@ -23,6 +24,7 @@ namespace FeatureSwitcher.DebugConsole.Example
         private void ConfigureFeatures()
         {
             Configuration.Features.Are.ConfiguredBy.Custom(
+                DebugConsoleBehaviour.IsEnabled,
                 Configuration.Features.OfType<Feature2>.Enabled);
         }
     }

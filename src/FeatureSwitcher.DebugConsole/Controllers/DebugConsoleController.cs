@@ -13,13 +13,13 @@ namespace FeatureSwitcher.DebugConsole.Controllers
 {
     public class DebugConsoleController : Controller
     {
-        private bool _isEnabled = false;
+        private bool _isForced = false;
 
         [HttpPost]
         [Route("featureswitcher/debugconsole/states")]
         public ActionResult GetStates()
         {
-            if (Debugger.IsAttached ||this._isEnabled)
+            if (Debugger.IsAttached ||this._isForced)
             {
                 var features = this.FindAllFeatures();
 
@@ -41,9 +41,9 @@ namespace FeatureSwitcher.DebugConsole.Controllers
             return Json(new GetStateResult() { Enabled = false });
         }
 
-        internal void SetEnabled()
+        internal void SetForced()
         {
-            this._isEnabled = true;
+            this._isForced = true;
         }
 
         private Type[] FindAllFeatures()
