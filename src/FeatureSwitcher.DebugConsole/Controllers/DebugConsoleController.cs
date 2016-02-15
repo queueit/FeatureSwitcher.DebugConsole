@@ -27,7 +27,12 @@ namespace FeatureSwitcher.DebugConsole.Controllers
                 {
                     var feature = Activator.CreateInstance(featureType) as IFeature;
 
-                    return new FeatureState() {FeatureName = featureType.FullName, Enabled = feature.Is().Enabled};
+                    return new FeatureState()
+                    {
+                        FeatureName = featureType.FullName,
+                        ShortFeatureName = featureType.Name,
+                        Enabled = feature.Is().Enabled
+                    };
                 });
 
                 return Json(new GetStateResult() {Enabled = true, States = featureStates.ToArray()});

@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using FeatureSwitcher.DebugConsole.Example.Features;
 
 namespace FeatureSwitcher.DebugConsole.Example
 {
@@ -16,6 +17,13 @@ namespace FeatureSwitcher.DebugConsole.Example
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            this.ConfigureFeatures();
+        }
+
+        private void ConfigureFeatures()
+        {
+            Configuration.Features.Are.ConfiguredBy.Custom(
+                Configuration.Features.OfType<Feature2>.Enabled);
         }
     }
 }
