@@ -1,6 +1,6 @@
 ﻿/// <reference path="../../typings/jquery/jquery.d.ts" />
 /// <reference path="../../typings/knockout/knockout.d.ts" />
-/// <reference path="../../typings/jquery.cookie/jquery.cookie.d.ts" />
+/// <reference path="../../typings/js-cookie/js-cookie.d.ts" />
 
 module Queueit.Model {
     
@@ -64,23 +64,16 @@ module Queueit.Model {
         toggleFeature = () => {
             this.enabled(!this.enabled());
 
-            if (this.enabled())
-            {
-                $.cookie(this.featureName(), 'true');
-                //console.log($.cookie(this.featureName()));
+            if (this.enabled()) {
+                Cookies.set(this.featureName(), true, {expires: 7, path: '/'});
             }
 
-            if (this.enabled() === false)
-            {
-                $.cookie(this.featureName(), 'false');
-                //console.log($.cookie(this.featureName(), 'false'));
+            if (this.enabled() === false) {
+                Cookies.set(this.featureName(), false, { expires: 7, path: '/' });
             }
 
             if (this.enabled() === null) {
-                
-                $.removeCookie(this.featureName()); // => false
-                //$.removeCookie(this.featureName(), null);
-                //console.log($.removeCookie(this.featureName()));      
+                Cookies.remove(this.featureName(), { path: '/' }); // removed!   
             }
         };
     }
