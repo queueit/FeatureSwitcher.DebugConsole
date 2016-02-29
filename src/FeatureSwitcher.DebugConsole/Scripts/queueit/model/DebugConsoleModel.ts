@@ -73,7 +73,7 @@ module Queueit.Model {
             }
 
             if (this.enabled() === null) {
-                Cookies.remove(this.featureName(), { path: '/' }); // removed!   
+                Cookies.remove(this.featureName(), { path: '/' });
             }
         };
     }
