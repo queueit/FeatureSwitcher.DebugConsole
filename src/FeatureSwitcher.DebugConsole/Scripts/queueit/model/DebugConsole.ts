@@ -31,36 +31,41 @@ module Queueit.Model {
             else { // iframe code
                 this.model = ko.observable(null);
 
-                var featureBindingElement: HTMLDivElement = <HTMLDivElement>document.createElement('div');
-                featureBindingElement.setAttribute("data-bind", "component: { name: 'feature-component', params: { states: states }}");
-                document.body.appendChild(featureBindingElement);
-
-                ko.components.register('feature-component', {
-                    viewModel: function (params) {
-                        this.states = params.states;
-                    },
-                    template: '<div id="feature-iframe" class="row" style="width: 1170px; margin-left: 370px;"><div class="col-xs-12" data- bind="visible: states.length > 0" ><table class="table table-hover"><tbody data-bind="foreach: states"><tr data-bind="css: { success: enabled }"><td class="col-xs-3 form-group"><span data-bind="text: shortFeatureName"></span></td><td class="col-xs-7 form-group"><span data-bind="text: featureName"></span></td><td class="col-xs-2 text-right"><div class="text-right" style="white-space: nowrap;"><span data-bind="if: enabled"><button id="onBtn" type="button" class="btn btn-success" data-bind="click: toggleFeature">ON</button></span><span data-bind="if: enabled() === false"><button id="offBtn" type="button" class="btn btn-danger" data-bind="click: toggleFeature">OFF</button></span><span data-bind="if: enabled() === null"><button id="defaultBtn" type="button" class="btn btn-default" data-bind="click: toggleFeature">Default</button></span></div> </td></tr></tbody></table></div></div>'
-                });
-
                 $.ajax({
                     type: "POST",
                     url: "/featureswitcher/debugconsole/states",
                     success: (data) => {
                         this.loadSuccess(data);
-                        ko.applyBindings(this.model);
                     }
                 });
             }
         }
 
         protected loadSuccess(loadedData: any) {
+
+            if (!loadedData.Enabled)
+                return;
+
+            var featureBindingElement: HTMLDivElement = <HTMLDivElement>document.createElement('div');
+            featureBindingElement.setAttribute("data-bind", "component: { name: 'feature-component', params: { states: states }}");
+            document.body.appendChild(featureBindingElement);
+
+            ko.components.register('feature-component', {
+                viewModel: function (params) {
+                    this.states = params.states;
+                },
+                template: '<div id="feature-iframe" class="row" style="width: 1170px; margin-left: 370px;"><div class="col-xs-12" data- bind="visible: states.length > 0" ><table class="table table-hover"><tbody data-bind="foreach: states"><tr data-bind="css: { success: enabled }"><td class="col-xs-3 form-group"><span data-bind="text: shortFeatureName"></span></td><td class="col-xs-7 form-group"><span data-bind="text: featureName"></span></td><td class="col-xs-2 text-right"><div class="text-right" style="white-space: nowrap;"><span data-bind="if: enabled"><button id="onBtn" type="button" class="btn btn-success" data-bind="click: toggleFeature">ON</button></span><span data-bind="if: enabled() === false"><button id="offBtn" type="button" class="btn btn-danger" data-bind="click: toggleFeature">OFF</button></span><span data-bind="if: enabled() === null"><button id="defaultBtn" type="button" class="btn btn-default" data-bind="click: toggleFeature">Default</button></span></div> </td></tr></tbody></table></div></div>'
+            });
+
             this.model = {
                 states: ko.observableArray<FeatureState>()
             };
 
             for (var i = 0; i < loadedData.States.length; i++) {
                 this.model.states.push(new FeatureState(loadedData.States[i]));
-            }              
+            }       
+            
+            ko.applyBindings(this.model);      
         }
     }
 
