@@ -127,6 +127,21 @@
     <TypeScriptMapRoot />
     <TypeScriptSourceRoot />
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <TypeScriptTarget>ES5</TypeScriptTarget>
+    <TypeScriptJSXEmit>None</TypeScriptJSXEmit>
+    <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
+    <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
+    <TypeScriptModuleKind>None</TypeScriptModuleKind>
+    <TypeScriptRemoveComments>False</TypeScriptRemoveComments>
+    <TypeScriptOutFile>Scripts\featureswitcher.debugconsole.js</TypeScriptOutFile>
+    <TypeScriptOutDir />
+    <TypeScriptGeneratesDeclarations>False</TypeScriptGeneratesDeclarations>
+    <TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
+    <TypeScriptSourceMap>True</TypeScriptSourceMap>
+    <TypeScriptMapRoot />
+    <TypeScriptSourceRoot />
+  </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
@@ -135,11 +150,8 @@
   -->
   <Target Name="AfterBuild">
     <ItemGroup>
-      <JavaScriptFiles Include="$(ProjectDir)Scripts\featureswitcher.debugconsole.js"/>
+      <JavaScriptFiles Include="$(ProjectDir)Scripts\featureswitcher.debugconsole.js" />
     </ItemGroup>
-    <JavaScriptCompressorTask
-          SourceFiles="@(JavaScriptFiles)"
-          OutputFile="$(ProjectDir)Scripts\featureswitcher.debugconsole.min.js"
-       />
+    <JavaScriptCompressorTask SourceFiles="@(JavaScriptFiles)" OutputFile="$(ProjectDir)Scripts\featureswitcher.debugconsole.min.js" />
   </Target>
 </Project>
