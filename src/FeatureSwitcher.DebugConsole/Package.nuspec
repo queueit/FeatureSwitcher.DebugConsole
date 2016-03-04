@@ -17,7 +17,9 @@
   </metadata>
   <files>
 	  <file src="bin\$configuration$\FeatureSwitcher.DebugConsole.dll" target="lib\net45\" />
-    <file src="Scripts\featureswitcher.debugconsole.js" target="Content\Scripts\" />
-    <file src="Scripts\featureswitcher.debugconsole.min.js" target="Content\Scripts\" />
   </files>
+  <contentFiles>
+    <files include="Scripts\featureswitcher.debugconsole.js" buildAction="Content" />
+    <files include="Scripts\featureswitcher.debugconsole.min.js" buildAction="Content" />
+  </contentFiles>
 </package>
