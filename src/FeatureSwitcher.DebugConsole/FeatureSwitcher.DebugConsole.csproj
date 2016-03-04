@@ -137,7 +137,7 @@
   -->
   <Target Name="Minify">
     <ItemGroup>
-      <JavaScriptFiles Include="Scripts\featureswitcher.debugconsole.js"/>
+      <JavaScriptFiles Include="$(ProjectDir)\Scripts\featureswitcher.debugconsole.js"/>
     </ItemGroup>
     <JavaScriptCompressorTask
           SourceFiles="@(JavaScriptFiles)"
