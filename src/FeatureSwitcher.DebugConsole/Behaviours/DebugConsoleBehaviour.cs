@@ -19,7 +19,7 @@ namespace FeatureSwitcher.DebugConsole.Behaviours
 
         private bool? Behaviour(Feature.Name name)
         {
-            if (Debugger.IsAttached || this._isForced)
+            if (HttpContext.Current.IsDebuggingEnabled || this._isForced)
             {
                 var cookie = HttpContext.Current.Request.Cookies[name.Value];
 

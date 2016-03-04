@@ -19,7 +19,7 @@ namespace FeatureSwitcher.DebugConsole.Controllers
         [Route("featureswitcher/debugconsole/states")]
         public ActionResult GetStates()
         {
-            if (Debugger.IsAttached ||this._isForced)
+            if (this.HttpContext.IsDebuggingEnabled || this._isForced)
             {
                 var features = this.FindAllFeatures();
 

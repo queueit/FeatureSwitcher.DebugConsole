@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Mvc;
+using System.Web.Routing;
 using FeatureSwitcher.DebugConsole.Controllers;
 using FeatureSwitcher.DebugConsole.Controllers.ViewModels;
 using FeatureSwitcher.DebugConsole.Tests.Features;
@@ -16,8 +19,10 @@ namespace FeatureSwitcher.DebugConsole.Tests.Controllers
         [Fact]
         public void DebugConsoleController_Disabled_Test()
         {
+
             // Disabled by default
             DebugConsoleController controller = new DebugConsoleController();
+            SetContext(controller);
             var states = controller.GetStates() as JsonResult;
 
             Assert.False((states.Data as GetStateResult).Enabled);
@@ -27,10 +32,12 @@ namespace FeatureSwitcher.DebugConsole.Tests.Controllers
         [Fact]
         public void DebugConsoleController_Enabled_Test()
         {
+
             Configuration.Features.Are.ConfiguredBy.Custom(
                 Configuration.Features.OfType<TestFeature2>.Enabled);
 
             DebugConsoleController controller = new DebugConsoleController();
+            SetContext(controller);
             controller.SetForced();
 
             var result = (controller.GetStates() as JsonResult).Data as GetStateResult;
@@ -45,5 +52,17 @@ namespace FeatureSwitcher.DebugConsole.Tests.Controllers
             Assert.Equal("TestFeature2", result.States.First(state => state.FeatureName == typeof(TestFeature2).FullName).ShortFeatureName);
             Assert.Equal("TestFeature3", result.States.First(state => state.FeatureName == typeof(TestFeature3).FullName).ShortFeatureName);
         }
+
+        private static void SetContext(Controller controller)
+        {
+            HttpRequest orgRequest = new HttpRequest(
+                null,
+                "http://q.queue-it.net/Inqueue.aspx",
+                "");
+
+            HttpContext context = new HttpContext(orgRequest, new HttpResponse(new StringWriter()));
+            controller.ControllerContext = new ControllerContext(new HttpContextWrapper(context), new RouteData(), controller);
+        }
+
     }
 }
