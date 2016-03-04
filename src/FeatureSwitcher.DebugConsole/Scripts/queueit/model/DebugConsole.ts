@@ -48,9 +48,6 @@ module Queueit.Model {
                     success: (data) => {
                         this.loadSuccess(data);
                         ko.applyBindings(this.model);
-                    },
-                    error: (errorResponse) => {
-                        alert('error loading data');
                     }
                 });
             }
