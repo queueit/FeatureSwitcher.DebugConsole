@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>FeatureSwitcher.DebugConsole</id>
+	  <title>Debug console plugin for FeatureSwitcher in MVC projects</title>
+    <version>$version$</version>
+    <authors>Queue-it</authors>
+    <owners>Queue-it</owners>
+    <licenseUrl>https://github.com/queueit/FeatureSwitcher.DebugConsole/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/queueit/FeatureSwitcher.DebugConsole</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Debug console plugin for FeatureSwitcher in MVC projects</description>
+	  <tags>FeatureSwitcher FeatureToggle Debug Console</tags>
+    <dependencies>
+      <dependency id="FeatureSwitcher" version="1.1.0" />
+    </dependencies>
+  </metadata>
+  <files>
+	  <file src="bin\$configuration$\FeatureSwitcher.DebugConsole.dll" target="lib\net45\" />
+    <file src="Scripts\featureswitcher.debugconsole.js" target="Content\Scripts\" />
+    <file src="Scripts\featureswitcher.debugconsole.min.js" target="Content\Scripts\" />
+  </files>
+</package>

@@ -232,7 +232,7 @@
     <Error Condition="!Exists('..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>
   <PropertyGroup>
-    <PostBuildEvent>xcopy $(SolutionDir)\src\FeatureSwitcher.DebugConsole\Scripts\queueit\model\DebugConsoleModel.js $(ProjectDir)\scripts\ /Y /R</PostBuildEvent>
+    <PostBuildEvent>xcopy $(SolutionDir)\src\FeatureSwitcher.DebugConsole\Scripts\featureswitcher.debugconsole.js $(ProjectDir)\scripts\ /Y /R</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
