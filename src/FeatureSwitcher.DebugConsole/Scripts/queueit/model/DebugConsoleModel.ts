@@ -1,7 +1,6 @@
 ﻿/// <reference path="../../typings/jquery/jquery.d.ts" />
 /// <reference path="../../typings/knockout/knockout.d.ts" />
 /// <reference path="../../typings/js-cookie/js-cookie.d.ts" />
-/// <reference path="../../typings/bootstrap/bootstrap.d.ts" />
 
 module Queueit.Model {
     
@@ -11,8 +10,11 @@ module Queueit.Model {
         constructor() {
             this.model = null;
 
-            window.onload = () => {
+            var orgOnLoad = window.onload;
+            window.onload = (ev) => {
                 this.initialize();
+                if (orgOnLoad)
+                    orgOnLoad(ev);
             };
         }
 
