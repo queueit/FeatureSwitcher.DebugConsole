@@ -135,11 +135,11 @@
   -->
   <Target Name="AfterBuild">
     <ItemGroup>
-      <JavaScriptFiles Include="$(ProjectDir)\Scripts\featureswitcher.debugconsole.js"/>
+      <JavaScriptFiles Include="$(ProjectDir)Scripts\featureswitcher.debugconsole.js"/>
     </ItemGroup>
     <JavaScriptCompressorTask
           SourceFiles="@(JavaScriptFiles)"
-          OutputFile="Scripts\featureswitcher.debugconsole.min.js"
+          OutputFile="$(ProjectDir)Scripts\featureswitcher.debugconsole.min.js"
        />
   </Target>
 </Project>
