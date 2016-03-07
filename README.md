@@ -15,7 +15,8 @@ Install-Package FeatureSwitcher.DebugConsole
 ```c#
 Features.Are.ConfiguredBy.Custom(
     DebugConsoleBehaviour.IsEnabled
-    // Your behaviours here);
+    // Your behaviours here
+    );
 ```
 
 ## Include the javascript
