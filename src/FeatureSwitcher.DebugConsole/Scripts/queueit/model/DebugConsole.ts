@@ -56,7 +56,7 @@ module Queueit.Model {
 
         private addContentToIframe(iframe: HTMLIFrameElement) {
             var scriptElement = document.getElementById('feature-debug-console-script');
-            var src = "javascript:(function() { document.open(); document.write('<!DOCTYPE html><html lang=\"en\"><head><link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css\"><script type=\"text/javascript\" src=\"https://code.jquery.com/jquery-2.1.3.min.js\"></script><script type=\"text/javascript\" src=\"https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.0/js.cookie.min.js\"></script><script type=\"text/javascript\" src= \"https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js\"></script>" + scriptElement.outerHTML + "</head><body id=\"feature-switcher-debug-console-iframe\"></body></html>'); document.close();})()";
+            var src = "javascript:(function() { document.open(); document.write('<!DOCTYPE html><html lang=\"en\"><head><link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css\"><script type=\"text/javascript\" src=\"https://code.jquery.com/jquery-1.12.0.min.js\"></script><script type=\"text/javascript\" src=\"https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.0/js.cookie.min.js\"></script><script type=\"text/javascript\" src= \"https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js\"></script>" + scriptElement.outerHTML + "</head><body id=\"feature-switcher-debug-console-iframe\"></body></html>'); document.close();})()";
             iframe.src = src;
         }
 
