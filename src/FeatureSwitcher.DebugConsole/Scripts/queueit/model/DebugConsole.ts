@@ -12,7 +12,7 @@ module Queueit.Model {
             window.onload = (ev) => {
                 this.initialize();
                 if (orgOnLoad)
-                    orgOnLoad(ev);
+                    orgOnLoad.call(ev);
             };
         }
 
