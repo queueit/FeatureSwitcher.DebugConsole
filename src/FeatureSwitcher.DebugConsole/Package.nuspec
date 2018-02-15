@@ -16,7 +16,7 @@
     </dependencies>
   </metadata>
   <files>
-	  <file src="bin\$configuration$\FeatureSwitcher.DebugConsole.dll" target="lib\net471\" />
+	  <file src="bin\$configuration$\net471\FeatureSwitcher.DebugConsole.dll" target="lib\net471\" />
     <file src="Scripts\featureswitcher.debugconsole.js" target="\scripts\" />
     <file src="Scripts\featureswitcher.debugconsole.min.js" target="\scripts\" />
   </files>
