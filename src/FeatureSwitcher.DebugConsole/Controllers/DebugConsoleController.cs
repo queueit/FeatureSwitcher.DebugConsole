@@ -45,7 +45,7 @@ namespace FeatureSwitcher.DebugConsole.Controllers
         private Type[] FindAllFeatures()
         {
             return AppDomain.CurrentDomain.GetAssemblies()
-                .SelectMany(domain => domain.GetTypes())
+                .SelectMany(domain => domain.GetTypesSafely())
                 .Where(type => !type.IsInterface && !type.IsAbstract && typeof(IFeature).IsAssignableFrom(type))
                 .ToArray();
         }
