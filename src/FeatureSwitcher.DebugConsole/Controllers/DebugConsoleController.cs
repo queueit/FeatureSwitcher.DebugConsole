@@ -1,11 +1,7 @@
 ﻿#define DEBUG
 
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web.Mvc;
 using FeatureSwitcher.DebugConsole.Controllers.ViewModels;
 
