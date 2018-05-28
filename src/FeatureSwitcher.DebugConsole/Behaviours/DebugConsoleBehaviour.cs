@@ -17,6 +17,12 @@ namespace FeatureSwitcher.DebugConsole.Behaviours
 
         private bool? Behaviour(Feature.Name name)
         {
+            if (HttpContext.Current == null)
+                return null;
+
+            if (name == null || string.IsNullOrWhiteSpace(name.Value))
+                return null;
+
             if (HttpContext.Current.IsDebuggingEnabled || this._isForced)
             {
                 var cookie = HttpContext.Current.Request.Cookies[name.Value];
