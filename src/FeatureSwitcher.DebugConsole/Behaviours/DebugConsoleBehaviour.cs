@@ -25,6 +25,9 @@ namespace FeatureSwitcher.DebugConsole.Behaviours
 
             if (HttpContext.Current.IsDebuggingEnabled || this._isForced)
             {
+                if (HttpContext.Current.Request == null)
+                    return null;
+
                 var cookie = HttpContext.Current.Request.Cookies[name.Value];
 
                 if (cookie == null)
